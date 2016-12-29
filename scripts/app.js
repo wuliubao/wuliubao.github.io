@@ -294,7 +294,7 @@
    */
   var initialWeatherForecast = {
     key: '2459115',
-    label: 'New York, NY',
+    label: '杭州, 浙江',
     created: '2016-07-22T01:00:00Z',
     channel: {
       astronomy: {
