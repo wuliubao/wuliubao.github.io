@@ -87,9 +87,9 @@
 
 <p>IOC是Spring最核心的思想，网上介绍的牛文也很多。Bean就是个IOC容器。Spring Boot更是方便，通过注解管理使用、自动配置，我们只需在controller层，使用Request/Request/Get/Post等注解就可以解析各种http业务。如果直接使用servlet的话，就需要继承一个HttpServlet类，然后复写doGet和doPost方法了。本来一个http请求要查找各种依赖对象，我写的业务代码需要控制框架做一些事。现在相反，各种依赖的对象都被动的传递进来，我按照Spring的标准写着各种业务逻辑。</p>
 
-<p>再看看近几年客户端、前端的发展,其实和ioc的思想也是一样。以前的原生GUI开发到MVVM模式声明式编程。都能感觉到一种ioc的感觉。最早不同平台不同语言写GUI的方式都差不多，比如我想获取页面上的某个元素，然后让它透明。首先获取，Qt是findChild、findChildren，android是findViewById，ios通过拖拽获取相同变量名，Web是通过getElementBy<em>*，然后再对这个元素对象使用对应set</em>方法。这样就一股命令、控制的感觉，也有人叫命令式编程。对应界面上的元素多了，find,set代码也就多了，人也烦了。。后来慢慢出现了一些MVVM、声明式的框架，AngularJS React AndroidX RxSwift Flutter这些，他们更多的是把某个状态，比如“透明”通过视图模型（View Model）直接与数据绑定，只要数据发生变化，UI上也发生变化，不用再在代码里写控制了。</p>
+<p>再看看近几年客户端、前端的发展,其实和IOC的思想也是一样。从以前的原生GUI开发到MVVM模式、声明式编程，都能感觉到一种IOC的感觉。最早不同平台、不同语言写GUI的方式都差不多，比如我想获取页面上的某个元素，然后让它透明。首先获取UI元素，Qt是findChild、findChildren，Android是findViewById，ios通过拖拽获取相同变量名或xxxWithIdentifier，Web是通过getElementByxx，然后再对这个元素对象使用对应set*（设置透明）方法。这样的流程就有一股命令、控制的感觉，也有人称为命令式编程。对应界面上的元素多了，find，set代码也就多了，开发者也会越来越暴躁。。后来渐渐的出现了一些MVVM、声明式的框架：AngularJS、React、AndroidX、RxSwift、Flutter等等。他们更多的是把某个状态，比如“透明”、“大小”通过视图模型（View Model）直接与数据绑定，只要数据发生变化，UI上也发生变化，不用再在代码里写控制了。</p>
 
-<p><code class="highlighter-rouge">这些设计，不管是在服务端还是客户端，都将很多控制细节对开发者隐藏。让开发者更加专注于具体的业务逻辑，同时也让代码很好的解耦。</code>我的思路对代码进行划分的话，一般分为<code class="highlighter-rouge">控制代码</code>和<code class="highlighter-rouge">业务代码</code>。控制代码：对数据类型、数据结构、数据容器、类、封装API、封装接口、封装框架的操作（读写）、内存资源管理等一些偏底层逻辑、语言特性代码。业务代码：功能性、逻辑判断、业务需求的代码。当我们把这两种代码IOC后，解耦后，业务代码就相对不太依赖语言、框架，移植出来也更加方便了。</p>
+<p><code class="highlighter-rouge">这些设计，不管是在服务端还是客户端，都将很多控制细节对开发者隐藏。让开发者更加专注于具体的业务逻辑，同时也让代码很好的解耦。</code>我的思路对代码进行划分的话，一般分为<code class="highlighter-rouge">控制代码</code>和<code class="highlighter-rouge">业务代码</code>。控制代码：对数据类型、数据结构、数据容器、类、封装API、封装接口、封装框架的操作（读写）、内存资源管理等一些偏底层逻辑、语言特性代码。业务代码：功能性、逻辑判断、业务需求的代码。当我们把这两种代码IOC后，解耦后，业务代码就相对不太依赖语言、框架，移植出来也更加方便。</p>
 
 <p><code class="highlighter-rouge">联想一下，IOC也是一种管理模式。</code></p>
 
