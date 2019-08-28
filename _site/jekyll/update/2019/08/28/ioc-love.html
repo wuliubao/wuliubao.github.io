@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>从 IOC 到 谈恋爱</title>
+  <meta name="description" content="最近和小伙伴们一起端对端搭起了一个平台。服务端是用Spring Boot搭建的。项目弄的差不多后，大家一起review代码。说到Spring蛮，肯定离不开IOC，小伙伴稍微说了下IOC，一下子挑起了我的神经。无奈时间仓促，我来没来得及发表一下自己的愚见，就结束了。回来想想，还是写篇博文谈谈自己的一些感受吧。">
+
+  <link rel="stylesheet" href="/assets/main.css">
+  <link rel="canonical" href="http://localhost:4000/jekyll/update/2019/08/28/ioc-love.html">
+  <link rel="alternate" type="application/rss+xml" title="刘宝_博客" href="/feed.xml">
+  
+  
+</head>
+
+
+  <body>
+
+    <header class="site-header" role="banner">
+
+  <div class="wrapper">
+    
+    
+    <a class="site-title" href="/">刘宝_博客</a>
+  
+    
+      <nav class="site-nav">
+        <input type="checkbox" id="nav-trigger" class="nav-trigger" />
+        <label for="nav-trigger">
+          <span class="menu-icon">
+            <svg viewBox="0 0 18 15" width="18px" height="15px">
+              <path fill="#424242" d="M18,1.484c0,0.82-0.665,1.484-1.484,1.484H1.484C0.665,2.969,0,2.304,0,1.484l0,0C0,0.665,0.665,0,1.484,0 h15.031C17.335,0,18,0.665,18,1.484L18,1.484z"/>
+              <path fill="#424242" d="M18,7.516C18,8.335,17.335,9,16.516,9H1.484C0.665,9,0,8.335,0,7.516l0,0c0-0.82,0.665-1.484,1.484-1.484 h15.031C17.335,6.031,18,6.696,18,7.516L18,7.516z"/>
+              <path fill="#424242" d="M18,13.516C18,14.335,17.335,15,16.516,15H1.484C0.665,15,0,14.335,0,13.516l0,0 c0-0.82,0.665-1.484,1.484-1.484h15.031C17.335,12.031,18,12.696,18,13.516L18,13.516z"/>
+            </svg>
+          </span>
+        </label>
+
+        <div class="trigger">
+          
+            
+            
+            <a class="page-link" href="/about/">关于我</a>
+            
+          
+            
+            
+          
+            
+            
+          
+            
+            
+          
+        </div>
+      </nav>
+    
+  </div>
+</header>
+
+
+    <main class="page-content" aria-label="Content">
+      <div class="wrapper">
+        <article class="post" itemscope itemtype="http://schema.org/BlogPosting">
+
+  <header class="post-header">
+    <h1 class="post-title" itemprop="name headline">从 IOC 到 谈恋爱</h1>
+    <p class="post-meta">
+      <time datetime="2019-08-28T23:06:18+08:00" itemprop="datePublished">
+        
+        Aug 28, 2019
+      </time>
+      </p>
+  </header>
+
+  <div class="post-content" itemprop="articleBody">
+    <p>最近和小伙伴们一起端对端搭起了一个平台。服务端是用Spring Boot搭建的。项目弄的差不多后，大家一起review代码。说到Spring蛮，肯定离不开IOC，小伙伴稍微说了下IOC，一下子挑起了我的神经。无奈时间仓促，我来没来得及发表一下自己的愚见，就结束了。回来想想，还是写篇博文谈谈自己的一些感受吧。</p>
+
+<p>最早看到IOC（Inversion of Control）控制反转、DI（Dependency Injection）依赖注入，是在某一本讲设计模式的书上。当时没啥项目经验，也不是太懂有啥好处。后来随着时光的飞逝，IOC让我对人生的一些道理从<code class="highlighter-rouge">了解</code> 到了 <code class="highlighter-rouge">懂得</code>。</p>
+
+<p>简单说IOC、DI，相对而言就是：控制正常运转，正常依赖。我们在一个对象A内部实例化一个对象B，就是对象A依赖对象B，对象A控制对象B做一些操作。比如对象A：刘宝，对象B：锤子。我要用锤子做一些事，这时我的内部就该实例化一个锤子对象。我就<code class="highlighter-rouge">依赖</code>了锤子，我<code class="highlighter-rouge">控制</code>锤子<code class="highlighter-rouge">打人</code>和<code class="highlighter-rouge">砸电脑</code>。有一天来了一把砍刀，这个很酷，我要用，这个时候我又要在我内部再实例化一个砍刀，我<code class="highlighter-rouge">依赖</code>了砍刀，我<code class="highlighter-rouge">控制</code>砍刀<code class="highlighter-rouge">砍人</code>和<code class="highlighter-rouge">砸电脑</code>。又一天，来了一把98K。。我。。又要。。好累。。</p>
+
+<p>小时候大家都算过1+2+…+100。同理正着太累就反着来。锤子、砍刀、98K，他们能为我提供的方法就是<code class="highlighter-rouge">打/砍/狙人</code>和<code class="highlighter-rouge">砸电脑</code>。那我现在不关心内部有声明，反正拿到手，可以<code class="highlighter-rouge">打/砍/狙人</code>和<code class="highlighter-rouge">砸电脑</code>就行。这个时候我就被<code class="highlighter-rouge">注入</code>了依赖。反过来锤子、砍刀、98K制定了一些了标准，比如<code class="highlighter-rouge">打/砍/狙人</code>和<code class="highlighter-rouge">砸电脑</code>，也许他们还定义了<code class="highlighter-rouge">打/砍/狙自己</code>，我如果想用他们，只能接受，控制出现了反转。。</p>
+
+<p>IOC是Spring最核心的思想，网上介绍的牛文也很多。Bean就是个IOC容器。Spring Boot更是方便，通过注解管理使用、自动配置，我们只需在controller层，使用Request/Request/Get/Post等注解就可以解析各种http业务。如果直接使用servlet的话，就需要继承一个HttpServlet类，然后复写doGet和doPost方法了。本来一个http请求要查找各种依赖对象，我写的业务代码需要控制框架做一些事。现在相反，各种依赖的对象都被动的传递进来，我按照Spring的标准写着各种业务逻辑。</p>
+
+<p>再看看近几年客户端、前端的发展,其实和ioc的思想也是一样。以前的原生GUI开发到MVVM模式声明式编程。都能感觉到一种ioc的感觉。最早不同平台不同语言写GUI的方式都差不多，比如我想获取页面上的某个元素，然后让它透明。首先获取，Qt是findChild、findChildren，android是findViewById，ios通过拖拽获取相同变量名，Web是通过getElementBy<em>*，然后再对这个元素对象使用对应set</em>方法。这样就一股命令、控制的感觉，也有人叫命令式编程。对应界面上的元素多了，find,set代码也就多了，人也烦了。。后来慢慢出现了一些MVVM、声明式的框架，AngularJS React AndroidX RxSwift Flutter这些，他们更多的是把某个状态，比如“透明”通过视图模型（View Model）直接与数据绑定，只要数据发生变化，UI上也发生变化，不用再在代码里写控制了。</p>
+
+<p>这些设计，不管是在服务端还是客户端，都将很多控制细节对开发者隐藏。让开发者更加专注于具体的业务逻辑，同时也让代码很好的解耦。我的思路对代码进行划分的话，一般分为控制代码和业务代码。控制代码：对数据类型、数据结构、数据容器、类、封装API、封装接口、封装框架的操作（读写），内存资源管理等一些偏底层逻辑代码，业务代码：功能性、逻辑判断、业务需求的代码。。当我们把这两种代码IOC后，解耦后，业务代码就相对不太依赖语言、框架，移植出来也更加方便了。</p>
+
+<p><code class="highlighter-rouge">联想一下，IOC也是一种管理模式</code>。</p>
+
+<p>两个团队在一起合作，比如前台和后台。前台需要依赖后台数据，随着用户越来越多，后台数据也千差万别，到前台就越来越复杂了，一会儿双方就会忙的不可开交了。如果这时候前台和后台定一个标准的框架、布局、组件，然后介入数据，这样就是一个干净简明的系统了。</p>
+
+<p>举个现实中的管理例子：国内机票分销系统。GDS（Global Distribution System）全球分销系统，用于民用航空分销。国外有几个不同的代理系统。国内就是中航信的系统，不管是携程、飞猪、去哪儿都是通过中航信的数据库来做机票查询、销售操作的。国内40几家航空公司的机票业务系统都是建立在中航信基础上的。这就是一个典型的ioc例子，机票的销售都是通过中航信制定的标准来的，携程、飞猪、去哪儿这些OTA不管占了多少销售量，都很难自己来随心所欲的控制机票及航空公司的计划。当然这个反转的不是太好，就他一家分销系统。。传统的商品分销模式，分销商则占很大话语权。一个工厂要把商品分销到全国各地，需要不同的分销渠道，不同的分销渠道有不同的玩法，每增加一个渠道就需要新加一些流程，慢慢的工厂就比较依赖各个分销商。比如很多电视厂商就抱怨苏宁乱搞价格促销，我上大学时，想给我老家工厂的一个音响厂做网店。结果那个工厂老板竟然这样说：怕网店做大了，他的分销商就不进他的货了。如果工厂制定了自己的一个业务标准，让符合这个标准的人当工厂的分销商，这个时候各个分销商反过来就依赖自己的标准了。</p>
+
+<p><code class="highlighter-rouge">突然感觉谈恋爱也是这个道理</code>，我喜欢小花，我就按照自己的感觉，给她买花。我喜欢小丽，我就想她是不是饿了，请她吃饭。到头来，她们都不愿意和我在一起，因为她们感觉被控制了，会有种<code class="highlighter-rouge">压迫</code>、<code class="highlighter-rouge">捆绑</code>、<code class="highlighter-rouge">奉承</code>、<code class="highlighter-rouge">自我</code>的意味。这个时候不如想想小花的标准，然后内部实例化一个小花的准的对象，这个时候就可以吸引到小花，然后再实例化一个小丽的标准对象，这个时候就可以吸引到小丽了。这样自己得到了提升，同样吸引了合适的妹子。大家在一起靠的是就是<code class="highlighter-rouge">共性</code>和<code class="highlighter-rouge">吸引</code>了，两全其美啊。不过，如果实例化的结果是虚假的，或者老是实例化，也就是渣男了。。</p>
+
+<p>说到这里，我又想起了美剧越狱。那个追捕主角迈克的FBI警察马洪，他有点精神病，需要药物维持，他就喜欢说一句：sometimes things happen that are just out of your control我觉得他是不是<code class="highlighter-rouge">控制欲</code>太强了，如果他知道一些ioc/di思想的化。。</p>
+
+<p>大卫芬奇的电影本杰明·巴顿奇事有句台词：不顺心的时候，你可以像疯狗一样咆哮，怨天尤人，诅咒命运，悔不当初。。但到最后，你还是得放手。。</p>
+
+<figure class="highlight"><pre><code class="language-ruby" data-lang="ruby"><span class="err">人生啊，还是需要放手。</span></code></pre></figure>
+
+<p>IOC是一种智慧。</p>
+
+  </div>
+
+  
+</article>
+
+      </div>
+    </main>
+
+    <footer class="site-footer">
+
+  <div class="wrapper">
+
+    <h2 class="footer-heading">刘宝_博客</h2>
+
+    <div class="footer-col-wrapper">
+      <div class="footer-col footer-col-1">
+        <ul class="contact-list">
+          <li>
+            
+              刘宝_博客
+            
+            </li>
+            
+            <li><a href="mailto:ahjxliubao@163.com">ahjxliubao@163.com</a></li>
+            
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-2">
+        <ul class="social-media-list">
+          
+          <li>
+            <a href="https://github.com/wuliubao"><span class="icon icon--github"><svg viewBox="0 0 16 16" width="16px" height="16px"><path fill="#828282" d="M7.999,0.431c-4.285,0-7.76,3.474-7.76,7.761 c0,3.428,2.223,6.337,5.307,7.363c0.388,0.071,0.53-0.168,0.53-0.374c0-0.184-0.007-0.672-0.01-1.32 c-2.159,0.469-2.614-1.04-2.614-1.04c-0.353-0.896-0.862-1.135-0.862-1.135c-0.705-0.481,0.053-0.472,0.053-0.472 c0.779,0.055,1.189,0.8,1.189,0.8c0.692,1.186,1.816,0.843,2.258,0.645c0.071-0.502,0.271-0.843,0.493-1.037 C4.86,11.425,3.049,10.76,3.049,7.786c0-0.847,0.302-1.54,0.799-2.082C3.768,5.507,3.501,4.718,3.924,3.65 c0,0,0.652-0.209,2.134,0.796C6.677,4.273,7.34,4.187,8,4.184c0.659,0.003,1.323,0.089,1.943,0.261 c1.482-1.004,2.132-0.796,2.132-0.796c0.423,1.068,0.157,1.857,0.077,2.054c0.497,0.542,0.798,1.235,0.798,2.082 c0,2.981-1.814,3.637-3.543,3.829c0.279,0.24,0.527,0.713,0.527,1.437c0,1.037-0.01,1.874-0.01,2.129 c0,0.208,0.14,0.449,0.534,0.373c3.081-1.028,5.302-3.935,5.302-7.362C15.76,3.906,12.285,0.431,7.999,0.431z"/></svg>
+</span><span class="username">wuliubao</span></a>
+
+          </li>
+          
+
+          
+        </ul>
+      </div>
+
+      <div class="footer-col footer-col-3">
+        <p>刘宝_图形_程序员
+</p>
+      </div>
+    </div>
+
+  </div>
+
+</footer>
+
+
+  </body>
+
+</html>
