@@ -24369,7 +24369,7 @@
                         h ? h(i, o.location, l.value) : console.warn("Can not find commit function for uniform " + o.name)
                     }
                 }
-                e && (i.drawElements(this._next.primitiveType, e, r.indexBuffer._format, t * r.indexBuffer._bytesPerIndex)), this._stats.drawcalls += 1, n.set(r), r.reset()
+                e && (r.indexBuffer ? i.drawElements(this._next.primitiveType, e, r.indexBuffer._format, t * r.indexBuffer._bytesPerIndex) : i.drawArrays(this._next.primitiveType, t, e)), this._stats.drawcalls += 1, n.set(r), r.reset()
             }, t
         })();
         i.default = b, e.exports = i.default
