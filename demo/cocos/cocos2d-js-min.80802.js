@@ -2523,6 +2523,7 @@
                 _maxAudioInstance: 24,
                 _id2audio: o,
                 play: function (t, e, i) {
+                    return;
                     var n, s = t;
                     if ("string" == typeof t) cc.warnID(8401, "cc.audioEngine", "cc.AudioClip", "AudioClip", "cc.AudioClip", "audio"), n = u(s = t), r._loadByUrl(s, (function (t, e) {
                         e && (n.src = e)
@@ -2654,6 +2655,7 @@
                 _music: {id: -1, loop: !1, volume: 1},
                 _effect: {volume: 1, pauseCache: []},
                 playMusic: function (t, e) {
+                    return;
                     var i = this._music;
                     return this.stop(i.id), i.id = this.play(t, e, i.volume), i.loop = e, i.id
                 },
@@ -2678,6 +2680,7 @@
                     return this.getState(this._music.id) === this.AudioState.PLAYING
                 },
                 playEffect: function (t, e) {
+                    return;
                     return this.play(t, e || !1, this._effect.volume)
                 },
                 setEffectsVolume: function (t) {
@@ -15707,7 +15710,7 @@
                 var M = [];
                 (function () {
                     var t = document.createElement("audio");
-                    t.canPlayType && (t.canPlayType('audio/ogg; codecs="vorbis"') && M.push(".ogg"), t.canPlayType("audio/mpeg") && M.push(".mp3"), t.canPlayType('audio/wav; codecs="1"') && M.push(".wav"), t.canPlayType("audio/mp4") && M.push(".mp4"), t.canPlayType("audio/x-m4a") && M.push(".m4a"))
+                    t.canPlayType && (t.canPlayType('audio/ogg; codecs="vorbis"') && M.push(".ogg"), t.canPlayType("audio/mpeg") && M.push(".mp3"), t.canPlayType('audio/wav; codecs="1"') && M.push(".wav"), t.canPlayType("audio/mp4") && M.push(".mp3"), t.canPlayType("audio/x-m4a") && M.push(".m4a"))
                 })(), w.format = M, t.__audioSupport = w
             }
             return t.NetworkType = {NONE: 0, LAN: 1, WWAN: 2}, t.getNetworkType = function () {
@@ -24369,7 +24372,7 @@
                         h ? h(i, o.location, l.value) : console.warn("Can not find commit function for uniform " + o.name)
                     }
                 }
-                e && (r.indexBuffer ? i.drawElements(this._next.primitiveType, e, r.indexBuffer._format, t * r.indexBuffer._bytesPerIndex) : i.drawArrays(this._next.primitiveType, t, e)), this._stats.drawcalls += 1, n.set(r), r.reset()
+                e && (console.log("r.indexBuffer:" + r.indexBuffer),r.indexBuffer ? i.drawElements(this._next.primitiveType, e, r.indexBuffer._format, t * r.indexBuffer._bytesPerIndex) : i.drawArrays(this._next.primitiveType, t, e)), this._stats.drawcalls += 1, n.set(r), r.reset()
             }, t
         })();
         i.default = b, e.exports = i.default
@@ -27334,7 +27337,7 @@
             for (var t = l.pauseElements, e = t.pop(); e;) e.play(), e = t.pop()
         })), l._polyfill = {devicePixelRatio: !1, event: "canplay", canPlayType: []};
         var h = document.createElement("video");
-        h.canPlayType && (h.canPlayType("video/ogg") && (l._polyfill.canPlayType.push(".ogg"), l._polyfill.canPlayType.push(".ogv")), h.canPlayType("video/mp4") && l._polyfill.canPlayType.push(".mp4"), h.canPlayType("video/webm") && l._polyfill.canPlayType.push(".webm")), s.browserType === s.BROWSER_TYPE_FIREFOX && (l._polyfill.autoplayAfterOperation = !0), s.OS_ANDROID !== s.os || s.browserType !== s.BROWSER_TYPE_SOUGOU && s.browserType !== s.BROWSER_TYPE_360 || (l._polyfill.zoomInvalid = !0);
+        h.canPlayType && (h.canPlayType("video/ogg") && (l._polyfill.canPlayType.push(".ogg"), l._polyfill.canPlayType.push(".ogv")), h.canPlayType("video/mp4") && l._polyfill.canPlayType.push(".mp3"), h.canPlayType("video/webm") && l._polyfill.canPlayType.push(".webm")), s.browserType === s.BROWSER_TYPE_FIREFOX && (l._polyfill.autoplayAfterOperation = !0), s.OS_ANDROID !== s.os || s.browserType !== s.BROWSER_TYPE_SOUGOU && s.browserType !== s.BROWSER_TYPE_360 || (l._polyfill.zoomInvalid = !0);
         var c = document.createElement("style");
         c.innerHTML = ".cocosVideo:-moz-full-screen{transform:matrix(1,0,0,1,0,0) !important;}.cocosVideo:full-screen{transform:matrix(1,0,0,1,0,0) !important;}.cocosVideo:-webkit-full-screen{transform:matrix(1,0,0,1,0,0) !important;}", document.head.appendChild(c), e.exports = l
     }), {"../core/platform/CCSys": 177, "../core/platform/utils": 192, "../core/vmath": 274}],
