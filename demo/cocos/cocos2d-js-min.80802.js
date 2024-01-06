@@ -24929,7 +24929,6 @@
                 var i = this._genMipmap ? this._mipFilter : -1;
                 e || -1 === i || (console.warn("NPOT textures do not support mipmap filter"), i = -1), t.texParameteri(t.TEXTURE_2D, t.TEXTURE_MIN_FILTER, (0, r.glFilter)(t, this._minFilter, i)), t.texParameteri(t.TEXTURE_2D, t.TEXTURE_MAG_FILTER, (0, r.glFilter)(t, this._magFilter, -1)), t.texParameteri(t.TEXTURE_2D, t.TEXTURE_WRAP_S, this._wrapS), t.texParameteri(t.TEXTURE_2D, t.TEXTURE_WRAP_T, this._wrapT);
                 var n = this._device.ext("EXT_texture_filter_anisotropic");
-                n && t.texParameteri(t.TEXTURE_2D, n.TEXTURE_MAX_ANISOTROPY_EXT, this._anisotropy)
             }, e
         })(n.default);
         i.default = h, e.exports = i.default
@@ -25004,7 +25003,6 @@
                 var i = this._genMipmaps ? this._mipFilter : -1;
                 e || -1 === i || (console.warn("NPOT textures do not support mipmap filter"), i = -1), t.texParameteri(t.TEXTURE_CUBE_MAP, t.TEXTURE_MIN_FILTER, (0, r.glFilter)(t, this._minFilter, i)), t.texParameteri(t.TEXTURE_CUBE_MAP, t.TEXTURE_MAG_FILTER, (0, r.glFilter)(t, this._magFilter, -1)), t.texParameteri(t.TEXTURE_CUBE_MAP, t.TEXTURE_WRAP_S, this._wrapS), t.texParameteri(t.TEXTURE_CUBE_MAP, t.TEXTURE_WRAP_T, this._wrapT);
                 var n = this._device.ext("EXT_texture_filter_anisotropic");
-                n && t.texParameteri(t.TEXTURE_CUBE_MAP, n.TEXTURE_MAX_ANISOTROPY_EXT, this._anisotropy)
             }, e
         })(n.default);
         i.default = h, e.exports = i.default
